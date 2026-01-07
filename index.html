@@ -29,16 +29,16 @@
             height: 100%;
             background: 
                 radial-gradient(ellipse at 30% 20%, 
-                    rgba(30, 0, 60, 0.15) 0%,
+                    rgba(30, 0, 60, 0.1) 0%,
                     transparent 50%),
                 radial-gradient(ellipse at 70% 80%, 
-                    rgba(0, 30, 60, 0.15) 0%,
+                    rgba(0, 30, 60, 0.1) 0%,
                     transparent 50%),
                 #000000;
             z-index: -10;
         }
         
-        /* Grade 3D sutil */
+        /* Grade 3D muito sutil */
         .grid-3d {
             position: fixed;
             top: 0;
@@ -46,60 +46,37 @@
             width: 300%;
             height: 300%;
             background-image: 
-                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 100px 100px;
+                linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 120px 120px;
             transform: 
                 perspective(1200px) 
                 rotateX(70deg) 
-                translateZ(-400px)
+                translateZ(-500px)
                 translateY(0);
-            animation: gridFlow 60s linear infinite;
+            animation: gridFlow 80s linear infinite;
             z-index: -9;
-            opacity: 0.4;
+            opacity: 0.25;
         }
         
         @keyframes gridFlow {
-            0% { transform: perspective(1200px) rotateX(70deg) translateZ(-400px) translateY(0); }
-            100% { transform: perspective(1200px) rotateX(70deg) translateZ(-400px) translateY(100px); }
+            0% { transform: perspective(1200px) rotateX(70deg) translateZ(-500px) translateY(0); }
+            100% { transform: perspective(1200px) rotateX(70deg) translateZ(-500px) translateY(120px); }
         }
         
-        /* Brilho sutil atrás da flor */
-        .back-glow {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: min(100vw, 500px);
-            height: min(100vw, 500px);
-            transform: translate(-50%, -50%);
-            background: radial-gradient(
-                ellipse at center,
-                transparent 0%,
-                transparent 50%,
-                rgba(255, 0, 255, 0.03) 55%,
-                rgba(0, 255, 255, 0.02) 60%,
-                transparent 70%
-            );
-            border-radius: 50%;
-            z-index: -8;
-            filter: blur(50px);
-            opacity: 0.6;
-        }
-        
-        /* ========== FLOR PRÓXIMA E GRANDE ========== */
+        /* ========== FLOR GRANDE E PRÓXIMA ========== */
         .flower-container {
             position: relative;
-            width: 85vmin;
-            height: 85vmin;
-            max-width: 400px;
-            max-height: 400px;
+            width: 90vmin;
+            height: 90vmin;
+            max-width: 420px;
+            max-height: 420px;
             cursor: pointer;
             z-index: 10;
-            /* Flor mais próxima - menos perspectiva */
-            perspective: 800px;
+            perspective: 700px;
         }
         
-        /* Flor principal - mais plana para parecer próxima */
+        /* Flor principal */
         .holo-flower {
             position: absolute;
             width: 100%;
@@ -108,25 +85,28 @@
             left: 50%;
             transform: translate(-50%, -50%) rotateX(60deg);
             transform-style: preserve-3d;
-            animation: floatClose 8s ease-in-out infinite;
+            animation: floatClose 9s ease-in-out infinite;
         }
         
         @keyframes floatClose {
             0%, 100% { 
                 transform: translate(-50%, -50%) rotateX(60deg) rotateZ(0deg); 
             }
-            50% { 
-                transform: translate(-50%, -50%) rotateX(60deg) rotateZ(1deg) translateY(-10px); 
+            33% { 
+                transform: translate(-50%, -50%) rotateX(60deg) rotateZ(0.5deg) translateY(-8px); 
+            }
+            66% { 
+                transform: translate(-50%, -50%) rotateX(60deg) rotateZ(-0.5deg) translateY(-12px); 
             }
         }
         
-        /* MIOLO GRANDE E PRÓXIMO */
+        /* MIOLO GRANDE E BRILHANTE */
         .center {
             position: absolute;
-            width: 15vmin;
-            height: 15vmin;
-            min-width: 60px;
-            min-height: 60px;
+            width: 16vmin;
+            height: 16vmin;
+            min-width: 70px;
+            min-height: 70px;
             top: 50%;
             left: 50%;
             background: radial-gradient(circle at 30% 30%, 
@@ -134,26 +114,29 @@
                 #ff00ff 40%, 
                 #00ffff 80%);
             border-radius: 50%;
-            transform: translate(-50%, 35%) translateZ(25px);
+            transform: translate(-50%, 35%) translateZ(30px);
             box-shadow: 
-                0 0 40px #ffff00,
-                0 0 80px rgba(255, 255, 0, 0.7),
-                0 0 120px rgba(255, 255, 0, 0.3),
-                inset 0 0 20px rgba(255, 255, 255, 0.9);
-            z-index: 15;
-            animation: pulseCenter 3s ease-in-out infinite;
+                0 0 50px #ffff00,
+                0 0 100px rgba(255, 255, 0, 0.7),
+                0 0 150px rgba(255, 255, 0, 0.3),
+                inset 0 0 25px rgba(255, 255, 255, 0.9);
+            z-index: 20;
+            animation: pulseCenter 4s ease-in-out infinite;
         }
         
         @keyframes pulseCenter {
             0%, 100% { 
-                transform: translate(-50%, 35%) translateZ(25px) scale(1); 
-            }
-            50% { 
-                transform: translate(-50%, 35%) translateZ(25px) scale(1.1); 
+                transform: translate(-50%, 35%) translateZ(30px) scale(1); 
                 box-shadow: 
                     0 0 50px #ffff00,
-                    0 0 100px rgba(255, 255, 0, 0.8),
-                    0 0 150px rgba(255, 255, 0, 0.4);
+                    0 0 100px rgba(255, 255, 0, 0.7);
+            }
+            50% { 
+                transform: translate(-50%, 35%) translateZ(30px) scale(1.15); 
+                box-shadow: 
+                    0 0 70px #ffff00,
+                    0 0 140px rgba(255, 255, 0, 0.8),
+                    0 0 200px rgba(255, 255, 0, 0.4);
             }
         }
         
@@ -162,10 +145,10 @@
             position: absolute;
             bottom: 50%;
             left: 50%;
-            width: 28vmin;
-            height: 50vmin;
-            max-width: 120px;
-            max-height: 220px;
+            width: 30vmin;
+            height: 55vmin;
+            max-width: 130px;
+            max-height: 240px;
             transform-origin: 50% 100%;
             background: linear-gradient(to top, 
                 rgba(255, 0, 255, 0.9) 0%, 
@@ -175,12 +158,12 @@
             border-radius: 0% 100% 0% 100% / 0% 100% 0% 100%;
             filter: 
                 hue-rotate(var(--hue)) 
-                drop-shadow(0 0 15px currentColor);
-            z-index: 12;
+                drop-shadow(0 0 18px currentColor);
+            z-index: 15;
             
             transform: translateX(-50%) rotateY(var(--rot));
             
-            animation: petalBreathe 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation: petalBreathe 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             animation-delay: var(--delay);
         }
         
@@ -189,33 +172,35 @@
                 transform: translateX(-50%) 
                            rotateY(var(--rot)) 
                            rotateX(-70deg) 
-                           translateZ(40px) 
+                           translateZ(45px) 
                            scaleY(0.7);
-                opacity: 0.8;
+                opacity: 0.85;
+                filter: hue-rotate(var(--hue)) drop-shadow(0 0 15px currentColor);
             }
             50% {
                 transform: translateX(-50%) 
                            rotateY(var(--rot)) 
-                           rotateX(-25deg) 
-                           translateZ(80px) 
+                           rotateX(-20deg) 
+                           translateZ(90px) 
                            scaleY(1);
                 opacity: 0.95;
+                filter: hue-rotate(var(--hue)) drop-shadow(0 0 25px currentColor);
             }
         }
         
         .petal1 { --rot: 0deg; --delay: 0s; --hue: 0deg; color: #ff00ff; }
-        .petal2 { --rot: 72deg; --delay: 0.6s; --hue: 72deg; color: #ff55ff; }
-        .petal3 { --rot: 144deg; --delay: 1.2s; --hue: 144deg; color: #aa00ff; }
-        .petal4 { --rot: 216deg; --delay: 1.8s; --hue: 216deg; color: #00aaff; }
-        .petal5 { --rot: 288deg; --delay: 2.4s; --hue: 288deg; color: #00ffff; }
+        .petal2 { --rot: 72deg; --delay: 0.7s; --hue: 72deg; color: #ff55ff; }
+        .petal3 { --rot: 144deg; --delay: 1.4s; --hue: 144deg; color: #aa00ff; }
+        .petal4 { --rot: 216deg; --delay: 2.1s; --hue: 216deg; color: #00aaff; }
+        .petal5 { --rot: 288deg; --delay: 2.8s; --hue: 288deg; color: #00ffff; }
         
         /* CAULE */
         .stem {
             position: absolute;
-            width: 4vmin;
-            height: 50vmin;
-            max-width: 16px;
-            max-height: 220px;
+            width: 5vmin;
+            height: 55vmin;
+            max-width: 20px;
+            max-height: 240px;
             top: 50%;
             left: 50%;
             background: linear-gradient(to top, 
@@ -226,139 +211,230 @@
                 transparent 100%);
             transform: translate(-50%, 50%) rotateX(-90deg);
             transform-origin: top center;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 
-                0 0 25px rgba(0, 255, 255, 0.8),
-                0 0 50px rgba(0, 255, 255, 0.4);
-            z-index: 8;
-            animation: stemGlow 4s ease-in-out infinite;
+                0 0 30px rgba(0, 255, 255, 0.8),
+                0 0 60px rgba(0, 255, 255, 0.4);
+            z-index: 10;
+            animation: stemGlow 5s ease-in-out infinite;
         }
         
         @keyframes stemGlow {
-            0%, 100% { opacity: 0.7; }
+            0%, 100% { opacity: 0.8; }
             50% { opacity: 1; }
         }
         
-        /* Glow da flor - sutil */
+        /* Glow sutil */
         .flower-glow {
             position: absolute;
-            width: 130%;
-            height: 130%;
+            width: 140%;
+            height: 140%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: radial-gradient(circle, 
-                rgba(255, 0, 255, 0.1) 0%,
-                rgba(0, 255, 255, 0.07) 30%,
-                transparent 60%);
+                rgba(255, 0, 255, 0.08) 0%,
+                rgba(0, 255, 255, 0.05) 30%,
+                transparent 65%);
             border-radius: 50%;
-            filter: blur(40px);
+            filter: blur(50px);
             z-index: 5;
-            opacity: 0.5;
+            opacity: 0.6;
         }
         
-        /* ========== PARTÍCULAS MÍNIMAS (APENAS 3) ========== */
+        /* ========== BOLINAS BRILHANTES QUE SAEM ANTES ========== */
+        /* Container das bolinhas */
+        .bubbles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 25;
+        }
+        
+        /* Bolinhas grandes e brilhantes */
+        .bubble {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            z-index: 25;
+            opacity: 0;
+            
+            /* Origem no miolo */
+            transform: translate(-50%, 35%) translateZ(30px);
+            
+            /* Duas camadas de brilho */
+            background: 
+                radial-gradient(circle at 30% 30%, 
+                    rgba(255, 255, 0, 0.9) 0%,
+                    rgba(255, 0, 255, 0.6) 30%,
+                    rgba(0, 255, 255, 0.3) 60%,
+                    transparent 80%);
+            
+            /* Animação: saem primeiro, mais devagar */
+            animation: bubbleFloat 12s ease-out infinite;
+            animation-delay: var(--bubble-delay);
+        }
+        
+        @keyframes bubbleFloat {
+            0% {
+                transform: translate(-50%, 35%) translateZ(30px)
+                           translateX(var(--start-x))
+                           translateY(var(--start-y))
+                           scale(0.3);
+                opacity: 0;
+                filter: blur(0px);
+                width: var(--size-start);
+                height: var(--size-start);
+            }
+            10% {
+                opacity: 0.9;
+                transform: translate(-50%, 35%) translateZ(30px)
+                           translateX(calc(var(--start-x) * 0.4))
+                           translateY(calc(var(--start-y) - 15px))
+                           scale(0.8);
+                filter: blur(0px);
+                width: var(--size-mid);
+                height: var(--size-mid);
+            }
+            30% {
+                opacity: 0.7;
+                transform: translate(-50%, 35%) translateZ(30px)
+                           translateX(calc(var(--start-x) * 0.8))
+                           translateY(calc(var(--start-y) - 50px))
+                           scale(1);
+                filter: blur(0px);
+                width: var(--size-max);
+                height: var(--size-max);
+            }
+            70% {
+                opacity: 0.5;
+                transform: translate(-50%, 35%) translateZ(30px)
+                           translateX(calc(var(--start-x) * 1.2))
+                           translateY(calc(var(--start-y) - 150px))
+                           scale(0.9);
+                filter: blur(1px);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, 35%) translateZ(30px)
+                           translateX(calc(var(--start-x) * 1.5))
+                           translateY(calc(var(--start-y) - 250px))
+                           scale(0.6);
+                filter: blur(2px);
+                width: var(--size-end);
+                height: var(--size-end);
+            }
+        }
+        
+        /* ========== PARTÍCULAS PEQUENAS (depois das bolinhas) ========== */
         .particle {
             position: absolute;
-            width: 2px;
-            height: 2px;
+            width: 3px;
+            height: 3px;
             background: #ffff00;
             border-radius: 50%;
-            box-shadow: 0 0 6px #ffff00;
-            z-index: 20;
+            box-shadow: 0 0 10px #ffff00;
+            z-index: 22;
             opacity: 0;
             
             top: 50%;
             left: 50%;
-            transform: translate(-50%, 35%) translateZ(25px);
+            transform: translate(-50%, 35%) translateZ(30px);
             
-            animation: subtleFlow 10s ease-out infinite;
+            /* Animação mais rápida, começa depois */
+            animation: particleFlow 8s ease-out infinite;
+            animation-delay: var(--particle-delay);
         }
         
-        @keyframes subtleFlow {
+        @keyframes particleFlow {
             0% {
-                transform: translate(-50%, 35%) translateZ(25px)
+                transform: translate(-50%, 35%) translateZ(30px)
                            translateX(var(--start-x))
                            translateY(var(--start-y))
+                           scale(0.2);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.7;
+                transform: translate(-50%, 35%) translateZ(30px)
+                           translateX(calc(var(--start-x) * 0.5))
+                           translateY(calc(var(--start-y) - 25px))
+                           scale(1);
+            }
+            80% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translate(-50%, 35%) translateZ(30px)
+                           translateX(calc(var(--start-x) * 2))
+                           translateY(calc(var(--start-y) - 180px))
                            scale(0.1);
                 opacity: 0;
             }
-            10% {
-                opacity: 0.3;
-                transform: translate(-50%, 35%) translateZ(25px)
-                           translateX(calc(var(--start-x) * 0.3))
-                           translateY(calc(var(--start-y) - 10px))
-                           scale(0.6);
-            }
-            90% {
-                opacity: 0.1;
-            }
-            100% {
-                transform: translate(-50%, 35%) translateZ(25px)
-                           translateX(calc(var(--start-x) * 1.5))
-                           translateY(calc(var(--start-y) - 80px))
-                           scale(0.05);
-                opacity: 0;
-            }
         }
         
-        /* Linhas de energia muito sutis */
+        /* Linhas de energia sutis */
         .energy-line {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 1px;
-            height: 100px;
+            width: 1.5px;
+            height: 120px;
             background: linear-gradient(to top, 
                 transparent 0%,
-                rgba(255, 255, 0, 0.4) 20%,
-                rgba(255, 0, 255, 0.2) 50%,
+                rgba(255, 255, 0, 0.5) 20%,
+                rgba(255, 0, 255, 0.3) 50%,
                 transparent 100%);
             transform-origin: bottom center;
-            z-index: 11;
-            opacity: 0.2;
+            z-index: 18;
+            opacity: 0.25;
             transform: translate(-50%, 35%) rotateY(var(--line-rot)) rotateX(90deg);
-            animation: linePulse 5s ease-in-out infinite;
+            animation: linePulse 6s ease-in-out infinite;
             animation-delay: var(--line-delay);
         }
         
         @keyframes linePulse {
-            0%, 100% { opacity: 0.1; height: 80px; }
-            50% { opacity: 0.3; height: 100px; }
+            0%, 100% { opacity: 0.2; height: 100px; }
+            50% { opacity: 0.4; height: 120px; }
         }
         
         .line1 { --line-rot: 0deg; --line-delay: 0s; }
-        .line2 { --line-rot: 72deg; --line-delay: 1s; }
-        .line3 { --line-rot: 144deg; --line-delay: 2s; }
-        .line4 { --line-rot: 216deg; --line-delay: 3s; }
-        .line5 { --line-rot: 288deg; --line-delay: 4s; }
+        .line2 { --line-rot: 72deg; --line-delay: 1.2s; }
+        .line3 { --line-rot: 144deg; --line-delay: 2.4s; }
+        .line4 { --line-rot: 216deg; --line-delay: 3.6s; }
+        .line5 { --line-rot: 288deg; --line-delay: 4.8s; }
         
-        /* ========== CONTROLE SIMPLES ========== */
+        /* ========== CONTROLE ========== */
         .pause-control {
             position: fixed;
             bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.7);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 18px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 12px;
             font-family: monospace;
             border: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 100;
-            backdrop-filter: blur(5px);
-            opacity: 0.7;
-            transition: opacity 0.3s;
+            backdrop-filter: blur(8px);
+            opacity: 0.6;
+            transition: all 0.3s;
         }
         
         .pause-control:hover {
             opacity: 1;
             border-color: rgba(0, 255, 255, 0.5);
+            background: rgba(0, 0, 0, 0.8);
         }
         
-        /* Checkbox escondido para pausar */
+        /* Checkbox escondido */
         #pause { display: none; }
         
         #pause:checked ~ .scene .holo-flower,
@@ -366,65 +442,31 @@
         #pause:checked ~ .scene .center,
         #pause:checked ~ .scene .stem,
         #pause:checked ~ .scene .energy-line,
+        #pause:checked ~ .scene .bubble,
         #pause:checked ~ .scene .particle,
         #pause:checked ~ .grid-3d {
             animation-play-state: paused;
         }
         
         #pause:checked + .pause-control::before {
-            content: "▶️ PLAY";
+            content: "▶ PLAY";
         }
         
         .pause-control::before {
-            content: "⏸️ PAUSE";
+            content: "⏸ PAUSE";
         }
         
         /* ========== RESPONSIVIDADE ========== */
         
-        /* Mobile médio */
         @media (max-width: 768px) {
             .flower-container {
-                width: 90vmin;
-                height: 90vmin;
+                width: 95vmin;
+                height: 95vmin;
                 perspective: 600px;
             }
             
             .holo-flower {
                 transform: translate(-50%, -50%) rotateX(65deg);
-            }
-            
-            .petal {
-                width: 30vmin;
-                height: 55vmin;
-            }
-            
-            .center {
-                width: 16vmin;
-                height: 16vmin;
-            }
-            
-            .grid-3d {
-                transform: perspective(1000px) rotateX(75deg) translateZ(-300px);
-                background-size: 80px 80px;
-            }
-            
-            .pause-control {
-                bottom: 12px;
-                font-size: 11px;
-                padding: 7px 14px;
-            }
-        }
-        
-        /* Mobile pequeno */
-        @media (max-width: 480px) {
-            .flower-container {
-                width: 95vmin;
-                height: 95vmin;
-                perspective: 500px;
-            }
-            
-            .holo-flower {
-                transform: translate(-50%, -50%) rotateX(70deg);
             }
             
             .petal {
@@ -435,22 +477,54 @@
             .center {
                 width: 18vmin;
                 height: 18vmin;
-                transform: translate(-50%, 40%) translateZ(25px);
+                transform: translate(-50%, 38%) translateZ(30px);
             }
             
             .grid-3d {
-                transform: perspective(800px) rotateX(80deg) translateZ(-200px);
-                background-size: 60px 60px;
-                opacity: 0.3;
+                transform: perspective(1000px) rotateX(75deg) translateZ(-400px);
+                background-size: 100px 100px;
+                opacity: 0.2;
             }
             
-            .back-glow {
-                width: min(120vw, 400px);
-                height: min(120vw, 400px);
+            .pause-control {
+                bottom: 12px;
+                font-size: 11px;
+                padding: 7px 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .flower-container {
+                width: 100vmin;
+                height: 100vmin;
+                perspective: 500px;
+                max-width: none;
+                max-height: none;
             }
             
-            /* Remover partículas em mobile */
-            .particle {
+            .holo-flower {
+                transform: translate(-50%, -50%) rotateX(70deg);
+            }
+            
+            .petal {
+                width: 35vmin;
+                height: 62vmin;
+            }
+            
+            .center {
+                width: 20vmin;
+                height: 20vmin;
+                transform: translate(-50%, 40%) translateZ(30px);
+            }
+            
+            .grid-3d {
+                transform: perspective(800px) rotateX(80deg) translateZ(-300px);
+                background-size: 80px 80px;
+                opacity: 0.15;
+            }
+            
+            /* Menos bolinhas em mobile pequeno */
+            .bubble:nth-child(n+6) {
                 display: none;
             }
             
@@ -458,27 +532,13 @@
                 bottom: 10px;
                 font-size: 10px;
                 padding: 6px 12px;
-                opacity: 0.9;
-            }
-        }
-        
-        /* Paisagem mobile */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .flower-container {
-                width: 80vmin;
-                height: 80vmin;
-            }
-            
-            .pause-control {
-                bottom: 8px;
-                font-size: 9px;
-                padding: 5px 10px;
+                opacity: 0.7;
             }
         }
         
         /* Efeito de clique */
-        .flower-container:active .holo-flower {
-            transform: translate(-50%, -50%) rotateX(60deg) scale(0.98);
+        .flower-container:active .center {
+            transform: translate(-50%, 35%) translateZ(30px) scale(1.2);
             transition: transform 0.1s;
         }
     </style>
@@ -491,21 +551,35 @@
     <!-- Fundo 3D escuro -->
     <div class="deep-space"></div>
     <div class="grid-3d"></div>
-    <div class="back-glow"></div>
     
-    <!-- Apenas 3 partículas muito sutis -->
-    <div class="particle" style="--start-x: 5px; --start-y: 0px; animation-delay: 0s;"></div>
-    <div class="particle" style="--start-x: 0px; --start-y: -5px; animation-delay: 3s;"></div>
-    <div class="particle" style="--start-x: -5px; --start-y: 5px; animation-delay: 6s;"></div>
+    <!-- Bolinhas brilhantes (8 unidades) -->
+    <div class="bubbles-container">
+        <div class="bubble" style="--bubble-delay: 0s; --start-x: 0px; --start-y: 0px; --size-start: 8px; --size-mid: 20px; --size-max: 25px; --size-end: 15px;"></div>
+        <div class="bubble" style="--bubble-delay: 1.5s; --start-x: 10px; --start-y: -5px; --size-start: 6px; --size-mid: 18px; --size-max: 22px; --size-end: 12px;"></div>
+        <div class="bubble" style="--bubble-delay: 3s; --start-x: -8px; --start-y: 8px; --size-start: 10px; --size-mid: 22px; --size-max: 28px; --size-end: 18px;"></div>
+        <div class="bubble" style="--bubble-delay: 4.5s; --start-x: 12px; --start-y: 0px; --size-start: 7px; --size-mid: 16px; --size-max: 20px; --size-end: 10px;"></div>
+        <div class="bubble" style="--bubble-delay: 6s; --start-x: -12px; --start-y: -8px; --size-start: 9px; --size-mid: 20px; --size-max: 24px; --size-end: 14px;"></div>
+        <div class="bubble" style="--bubble-delay: 7.5s; --start-x: 5px; --start-y: 10px; --size-start: 8px; --size-mid: 19px; --size-max: 23px; --size-end: 13px;"></div>
+        <div class="bubble" style="--bubble-delay: 9s; --start-x: -5px; --start-y: -10px; --size-start: 11px; --size-mid: 24px; --size-max: 30px; --size-end: 20px;"></div>
+        <div class="bubble" style="--bubble-delay: 10.5s; --start-x: 15px; --start-y: 5px; --size-start: 6px; --size-mid: 15px; --size-max: 18px; --size-end: 9px;"></div>
+    </div>
     
-    <!-- Flor grande e próxima -->
+    <!-- Partículas pequenas (6 unidades) -->
+    <div class="particle" style="--particle-delay: 0.5s; --start-x: 3px; --start-y: 0px;"></div>
+    <div class="particle" style="--particle-delay: 2s; --start-x: 0px; --start-y: -3px;"></div>
+    <div class="particle" style="--particle-delay: 3.5s; --start-x: -3px; --start-y: 3px;"></div>
+    <div class="particle" style="--particle-delay: 5s; --start-x: 4px; --start-y: -2px;"></div>
+    <div class="particle" style="--particle-delay: 6.5s; --start-x: -4px; --start-y: 2px;"></div>
+    <div class="particle" style="--particle-delay: 8s; --start-x: 2px; --start-y: 4px;"></div>
+    
+    <!-- Flor -->
     <div class="scene">
         <div class="flower-container">
             <div class="holo-flower">
                 <div class="flower-glow"></div>
                 <div class="stem"></div>
                 
-                <!-- Linhas de energia sutis -->
+                <!-- Linhas de energia -->
                 <div class="energy-line line1"></div>
                 <div class="energy-line line2"></div>
                 <div class="energy-line line3"></div>
@@ -514,7 +588,7 @@
                 
                 <div class="center"></div>
                 
-                <!-- Pétalas grandes -->
+                <!-- Pétalas -->
                 <div class="petal petal1"></div>
                 <div class="petal petal2"></div>
                 <div class="petal petal3"></div>
